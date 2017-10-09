@@ -3,6 +3,7 @@ package controller;
 
 import java.util.List;
 
+
 //import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +17,8 @@ import niit.model.User;
 @Controller
 public class UserController {
 	
+@Autowired
 private	UserDaoImpl userDao;
-
-
-public void setUserDao(UserDaoImpl userDao) {
-	this.userDao = userDao;
-}
 
 @RequestMapping("/register")
 public String reg()
@@ -32,7 +29,7 @@ public String reg()
 @RequestMapping("/user")
 	public String showUser(Model m)
 	{
-	setUserDao(new UserDaoImpl());
+//	setUserDao(new UserDaoImpl());
 	List<User> listUser=userDao.retrieveUser();
 	m.addAttribute("userList",listUser);
 	return "User";
